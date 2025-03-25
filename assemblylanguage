@@ -1,0 +1,26 @@
+.model flat, stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode: DWORD
+
+INCLUDE Irvine32.inc 
+
+.data
+    xValue BYTE "[Enter a value of x:]",0
+    cValue BYTE "[Enter a value of c:]",0
+    result BYTE "f(x) = ", 0 
+
+.code
+
+main PROC
+    mov edx, OFFSET xValue
+    call WriteString
+    mov edx, OFFSET cValue
+    call WriteString
+    mov edx, OFFSET result
+    call WriteString
+
+INVOKE ExitProcess,0
+
+main ENDP
+
+END main
